@@ -18,8 +18,7 @@ const EkDinKaMenu = ({ day, date }) => {
 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(`/api/user/menu`);
-      const menu = await response.json();
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/menu`);      const menu = await response.json();
       if (!menu) {
         navigation('/no-menu-available');
       }
