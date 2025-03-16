@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
 
-// https://vite.dev/config/
+// Load environment variables
+dotenv.config()
+
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -13,9 +16,8 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://foodcommbackend-production.up.railway.app/',
+        target: process.env.VITE_API_URL, // Use process.env here
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
         rewrite: (path) => {
           const rewrittenPath = path.replace(/^\/api/, '');
           console.log(`Rewriting ${path} to ${rewrittenPath}`);
