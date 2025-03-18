@@ -1,7 +1,7 @@
 import React from 'react'
 import EkDinKaMenu from '../components/EkDinKaMenu'
 import FeedbackBox from '../components/FeedbackBox'
-import { VITE_API_URL as API_URL } from 'import.meta.env';
+// import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 const getCurrentDayIndex = () => {
   const dayIndex = new Date().getDay()
@@ -12,7 +12,7 @@ const getCurrentDayIndex = () => {
 // submit feedback
 const submitFeedback = async (feedbackData) => {
   // check server response
-  const response = await fetch(`${API_URL}/user/review`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/user/review`, {
     method: 'POST',
     body: feedbackData
   })
