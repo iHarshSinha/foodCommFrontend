@@ -22,6 +22,8 @@ const EkDinKaMenu = ({ day, date, isHome }) => {
       const response = await fetch(`https://foodcommbackend-production.up.railway.app/user/menu`);
       console.log("FETCHING DATA FROM :\n");
       console.log(`/api/user/menu`);
+      console.log("harsh added this line");
+      console.log(import.meta.env.VITE_API_URL);
       const menu = await response.json();
       if (!menu) {
         navigation('/no-menu-available');
