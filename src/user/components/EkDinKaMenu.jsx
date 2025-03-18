@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EkTimeKaMenu from './EkTimeKaMenu';
 import { useNavigate } from 'react-router-dom';
+import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 const EkDinKaMenu = ({ day, date, isHome }) => {
   const [menuData, setMenuData] = useState(null);
@@ -18,13 +19,7 @@ const EkDinKaMenu = ({ day, date, isHome }) => {
 
   const fetchMenu = async () => {
     try {
-      // const response = await fetch(`/api/user/menu`);
-    
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/menu`);
-      console.log("FETCHING DATA FROM :\n");
-      console.log(`/api/user/menu`);
-      console.log("harsh added this line");
-      console.log(import.meta.env.VITE_API_URL);
+      const response = await fetch(`${API_URL}/user/menu`);
       const menu = await response.json();
       if (!menu) {
         navigation('/no-menu-available');
@@ -40,7 +35,7 @@ const EkDinKaMenu = ({ day, date, isHome }) => {
     try {
       const queryString = `date=${encodeURIComponent(date)}&meal=${encodeURIComponent(meal.toLowerCase())}`;
       console.log(queryString);
-      const response = await fetch(`/api/user/feast?${queryString}`);
+      const response = await fetch(`${API_URL}/user/feast?${queryString}`);
       // console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch feast menu");

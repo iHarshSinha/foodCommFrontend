@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useTheme } from '../../context/ThemeContext'
+import { VITE_API_URL as API_URL } from 'import.meta.env';
 // import JSConfetti from 'js-confetti'
 
 // styles for card flip animation
@@ -138,8 +139,8 @@ const EkTimeKaMenu = ({ meal, isHome, menuData, isFeast=false }) => {
     
     try {
       const API_URL = isFeast 
-      ? `/api/user/feast/rating/${menuData._id}`
-      : `/api/user/rating/${menuData._id}`;
+      ? `${API_URL}/user/feast/rating/${menuData._id}`
+      : `${API_URL}/user/rating/${menuData._id}`;
       console.log("Meal", menuData);
       console.log("Meal ID", menuData._id);
       console.log("Sending POST request to:", API_URL);

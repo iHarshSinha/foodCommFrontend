@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {WhatsApp} from '@mui/icons-material'
+import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 export default function Feedback() {
   const [reviews, setReviews] = useState([]);
@@ -14,7 +15,7 @@ export default function Feedback() {
 
   const fetchReviews = async (page) => {
     try {
-      const response = await fetch(`/api/admin/review?page=${page}&limit=5`);
+      const response = await fetch(`${API_URL}/admin/review?page=${page}&limit=5`);
       const data = await response.json();
       setReviews(data.reviews);
       setTotalPages(data.totalPages);
