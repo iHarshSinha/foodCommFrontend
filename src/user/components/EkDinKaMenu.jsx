@@ -18,7 +18,10 @@ const EkDinKaMenu = ({ day, date, isHome }) => {
 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(`/api/user/menu`);
+      // const response = await fetch(`/api/user/menu`);
+      const response = await fetch(`https://foodcommbackend-production.up.railway.app/user/menu`);
+      console.log("FETCHING DATA FROM :\n");
+      console.log(`/api/user/menu`);
       const menu = await response.json();
       if (!menu) {
         navigation('/no-menu-available');
