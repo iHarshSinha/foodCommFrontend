@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EkTimeKaMenu from './EkTimeKaMenu';
 import { useNavigate } from 'react-router-dom';
-import { VITE_API_URL as API_URL } from 'import.meta.env';
+// import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 const EkDinKaMenu = ({ day, date }) => {
   const [menuData, setMenuData] = useState(null);
@@ -19,7 +19,7 @@ const EkDinKaMenu = ({ day, date }) => {
 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(`${API_URL}/user/menu`); 
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/menu`); 
       const menu = await response.json();
       if (!menu) {
         navigation('/no-menu-available');
@@ -35,7 +35,7 @@ const EkDinKaMenu = ({ day, date }) => {
     try {
       const queryString = `date=${encodeURIComponent(date)}&meal=${encodeURIComponent(meal.toLowerCase())}`;
       console.log(queryString);
-      const response = await fetch(`${API_URL}?${queryString}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}?${queryString}`);
       // console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch feast menu");

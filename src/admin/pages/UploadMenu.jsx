@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { VITE_API_URL as API_URL } from 'import.meta.env';
+// import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 const UploadMenu = () => {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -18,7 +18,7 @@ const UploadMenu = () => {
     formData.append('file', selectedFile)
 
     try {
-      const response = await fetch(`${API_URL}/admin/menu`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/menu`, {
         method: 'POST',
         body: formData,
       })

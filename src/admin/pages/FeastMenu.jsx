@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { VITE_API_URL as API_URL } from 'import.meta.env';
+// import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 const FeastMenu = () => {
   const [formData, setFormData] = useState({
@@ -69,7 +69,7 @@ const FeastMenu = () => {
 
     console.log(submitData);
     try {
-      const response = await fetch(`${API_URL}/admin/feast`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/feast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

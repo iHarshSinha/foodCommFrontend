@@ -3,7 +3,7 @@ import { useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import { VITE_API_URL as API_URL } from 'import.meta.env';
+// import { VITE_API_URL as API_URL } from 'import.meta.env';
 
 
 const SickMealPage = () => {
@@ -54,7 +54,7 @@ const SickMealPage = () => {
       console.log(formattedData);
     
       try {
-        const response = await fetch(`${API_URL}/user/sick`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user/sick`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
