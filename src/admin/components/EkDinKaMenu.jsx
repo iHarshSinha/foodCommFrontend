@@ -35,7 +35,7 @@ const EkDinKaMenu = ({ day, date }) => {
     try {
       const queryString = `date=${encodeURIComponent(date)}&meal=${encodeURIComponent(meal.toLowerCase())}`;
       console.log(queryString);
-      const response = await fetch(`${import.meta.env.VITE_API_URL}?${queryString}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/user/feast?${queryString}`);
       // console.log(response);
       if (!response.ok) {
         throw new Error("Failed to fetch feast menu");
